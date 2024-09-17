@@ -1,17 +1,36 @@
-// Countdown Timer Script
-const countdownElement = document.getElementById('countdown');
-const endDate = new Date('2024-10-01T00:00:00'); // Set your end date here
+// Fun animations and interactive elements
 
-function updateCountdown() {
-  const now = new Date();
-  const timeLeft = endDate - now;
+// Scroll Animation for Food Items
+window.addEventListener('scroll', function() {
+    const animatedElements = document.querySelectorAll('.scroll-animation img');
+    animatedElements.forEach(function(element) {
+        const position = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        if (position < screenPosition) {
+            element.classList.add('active');
+        }
+    });
+});
 
-  const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+// Interactive Modules (Accordion Effect)
+const modules = document.querySelectorAll('.module');
 
-  countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+modules.forEach(function(module) {
+    module.addEventListener('click', function() {
+        this.classList.toggle('open');
+        const content = this.querySelector('.module-content');
+        if (this.classList.contains('open')) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+            content.style.maxHeight = 0;
+        }
+    });
+});
 
-  if (timeLeft < 0) {
-    countdownElement.text
+// Initializing module content height to zero
+window.addEventListener('load', function() {
+    const moduleContents = document.querySelectorAll('.module-content');
+    moduleContents.forEach(function(content) {
+        content.style.maxHeight = 0;
+    });
+});
