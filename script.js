@@ -1,100 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Master the art of dining with our 'Eat Like a Pro' course. Learn how to appreciate a 5-course meal and eat with style and sophistication.">
-  <title>Eat Like a Pro: Master the Art of the 5-Course Feast</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- Hero Section -->
-  <header class="hero-section">
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <h1>Become a 5-Course Master: Elevate Your Eating Game!</h1>
-      <p>Ready to feast like a pro? Learn how to eat smarter, savor longer, and impress with every bite.</p>
-      <a href="#learn-more" class="cta-button">Start Eating Like a Pro Today!</a>
-    </div>
-  </header>
+// Countdown Timer Script
+const countdownElement = document.getElementById('countdown');
+const endDate = new Date('2024-10-01T00:00:00'); // Set your end date here
 
-  <!-- What You'll Learn Section -->
-  <section id="learn-more" class="learn-section">
-    <h2>Why Stop at Just Eating? Learn to Dine!</h2>
-    <p>Everyone eats. But do they dine? Our course will teach you how to elevate your eating experience into an art form.</p>
-    <ul>
-      <li>Navigate a 5-course meal like a seasoned gourmand.</li>
-      <li>Pair food and drinks like a sommelier.</li>
-      <li>Master mindful eating for ultimate satisfaction.</li>
-      <li>Social dining etiquette for casual to formal settings.</li>
-      <li>Savor dessert guilt-free (and make room for it).</li>
-    </ul>
-    <img src="images/people-dining.jpg" alt="Group of people enjoying a meal" class="section-image">
-  </section>
+function updateCountdown() {
+  const now = new Date();
+  const timeLeft = endDate - now;
 
-  <!-- 5-Course Breakdown Section -->
-  <section class="course-breakdown">
-    <h2>Master the Art of Each Course</h2>
-    <div class="courses">
-      <div class="course">
-        <h3>Appetizer</h3>
-        <p>Learn the art of the perfect bite and set the stage for the feast to come.</p>
-        <img src="images/appetizer.jpg" alt="A beautifully plated appetizer" class="course-image">
-      </div>
-      <div class="course">
-        <h3>Soup or Salad</h3>
-        <p>Explore textures and temperatures to heighten your senses.</p>
-        <img src="images/soup-salad.jpg" alt="A bowl of soup and a fresh salad" class="course-image">
-      </div>
-      <div class="course">
-        <h3>Main Course</h3>
-        <p>Discover the secrets to enjoying every ingredient in harmony.</p>
-        <img src="images/main-course.jpg" alt="A delicious main course dish" class="course-image">
-      </div>
-      <div class="course">
-        <h3>Cheese Course</h3>
-        <p>More than just a nibble – the unsung hero of the meal.</p>
-        <img src="images/cheese-course.jpg" alt="A selection of cheeses on a board" class="course-image">
-      </div>
-      <div class="course">
-        <h3>Dessert</h3>
-        <p>End with style and savor the sweetness of life.</p>
-        <img src="images/dessert.jpg" alt="A mouthwatering dessert" class="course-image">
-      </div>
-    </div>
-  </section>
+  const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-  <!-- Testimonials Section -->
-  <section class="testimonials">
-    <div class="overlay"></div>
-    <h2>Real People, Real Feasts</h2>
-    <div class="testimonial-carousel">
-      <blockquote>“I never knew eating could be such an experience! This course completely changed how I approach food.” – Sarah L.</blockquote>
-      <blockquote>“I used to dread formal dinners, but now I’m teaching my friends how to dine like pros.” – James B.</blockquote>
-      <blockquote>“From the first bite to the last, I learned how to truly appreciate each moment. Game-changer!” – Monica R.</blockquote>
-    </div>
-  </section>
+  countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-  <!-- Call-to-Action Section -->
-  <section class="limited-time-offer">
-    <div class="overlay"></div>
-    <h2>Feast for Less: Enroll Now and Get 20% Off!</h2>
-    <p>The clock is ticking! Our exclusive eating masterclass is filling up fast. Don’t miss out!</p>
-    <div class="countdown-timer">
-      Offer ends in <span id="countdown"></span>
-    </div>
-    <a href="#enroll" class="cta-button">Get 20% Off</a>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2024 Eat Like a Pro | All rights reserved</p>
-    <div class="social-media">
-      <a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">Twitter</a>
-    </div>
-  </footer>
-
-  <!-- JavaScript for Countdown Timer -->
-  <script src="script.js"></script>
-</body>
-</html>
+  if (timeLeft < 0) {
+    countdownElement.text
